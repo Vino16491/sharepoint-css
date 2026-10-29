@@ -1,0 +1,90 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/sp/v2/column-formatting.schema.json",
+  "elmType": "div",
+  "style": {
+    "display": "flex",
+    "flex-direction": "row",
+    "justify-content": "flex-start",
+    "align-items": "center",
+    "width": "100%"
+  },
+  "children": [
+    {
+      "elmType": "div",
+      "style": {
+        "display": "=if(@currentField == 'Approved', 'block', 'none')",
+        "color": "#107c10",
+        "font-weight": "600",
+        "font-size": "14px",
+        "margin-right": "12px"
+      },
+      "txtContent": "✅ Approved"
+    },
+    {
+      "elmType": "div",
+      "style": {
+        "display": "=if(@currentField == 'Rejected', 'block', 'none')",
+        "color": "#a80000",
+        "font-weight": "600",
+        "font-size": "14px",
+        "margin-right": "12px"
+      },
+      "txtContent": "❌ Rejected"
+    },
+    {
+      "elmType": "button",
+      "customRowAction": {
+        "action": "setValue",
+        "actionInput": {
+          "Status": "",
+          "YourOtherColumnName": ""
+        }
+      },
+      "style": {
+        "display": "=if(@currentField == 'Approved' || @currentField == 'Rejected', 'block', 'none')",
+        "border": "none",
+        "background-color": "transparent",
+        "color": "#0078d4",
+        "cursor": "pointer",
+        "font-size": "13px",
+        "padding": "0"
+      },
+      "txtContent": "↩ Undo"
+    },
+    {
+      "elmType": "button",
+      "customRowAction": {
+        "action": "setValue",
+        "actionInput": {
+          "Status": "Approved",
+          "YourOtherColumnName": "Reviewed by Manager"
+        }
+      },
+      "style": {
+        "display": "=if(@currentField == '' || @currentField == 'Pending', 'block', 'none')",
+        "border": "none",
+        "background-color": "#dff6dd",
+        "color": "#107c10",
+        "cursor": "pointer",
+        "margin-right": "8px",
+        "padding": "5px 12px",
+        "border-radius": "4px",
+        "font-weight": "500"
+      },
+      "txtContent": "Approve"
+    },
+    {
+      "elmType": "button",
+      "customRowAction": {
+        "action": "setValue",
+        "actionInput": {
+          "Status": "Rejected",
+          "YourOtherColumnName": "Rejected by Manager"
+        }
+      },
+      "style": {
+        "display": "=if(@currentField == '' || @currentField == 'Pending', 'block', 'none')",
+        "border": "none",
+        "background-color": "#fde7e9",
+        "color": "#a80000",
+        "cursor": "pointer",
